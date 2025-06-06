@@ -1,0 +1,51 @@
+import React from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+
+export default function HomePage() {
+  return (
+    <main className="p-4 max-w-2xl mx-auto">
+      <h1 className="text-2xl font-bold text-center mb-4">🌍 SPEED DATING | THREADS</h1>
+
+      {/* 模式切換 Tabs */}
+      <Tabs defaultValue="threads">
+        <TabsList className="flex justify-center gap-4 mb-4">
+          <TabsTrigger value="threads">Threads</TabsTrigger>
+          <TabsTrigger value="match">配對</TabsTrigger>
+          <TabsTrigger value="chats">聊天室</TabsTrigger>
+        </TabsList>
+
+        {/* Threads 頁面 */}
+        <div className="space-y-4">
+          {/* 發文區 */}
+          <Card>
+            <CardContent className="space-y-2 p-4">
+              <Textarea placeholder="今晚想講啲咩？📝" />
+              <div className="flex justify-end">
+                <Button>發佈</Button>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Threads 貼文列表 */}
+          {[1, 2, 3].map((id) => (
+            <Card key={id}>
+              <CardContent className="p-4 space-y-1">
+                <div className="text-sm text-gray-500">用戶名稱 · 5 分鐘前</div>
+                <div className="text-base">今晚好想搵人食雞煲 😢</div>
+                <div className="flex gap-4 text-sm text-gray-600 mt-1">
+                  <span>❤️ 8</span>
+                  <span>💬 3</span>
+                  <span>⋯</span>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </Tabs>
+    </main>
+  );
+}
